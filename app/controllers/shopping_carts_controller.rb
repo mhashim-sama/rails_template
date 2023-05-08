@@ -5,14 +5,29 @@ class ShoppingCartsController < ApplicationController
 
   def add_items
     @product = Product.find(params[:product_id])
-    if @product
-      @cart.cart_items.create(
-        product_id: @product.id
-        quantity: 1
-      )
-      redirect_to @product, notice: 'Product added to cart'
+    context = {
+      product: @product,
+      cart: @cart
+    }
+    result = AddItemToCart.call(context)
+    if result.success?
+      redirect_to @product, notice: result.messaage
     else
-      redirect_to @product, alert: 'Product not found'
+      redirect_to @product, alert: result.messaage
+    end
+  end
+
+  def remove_items
+    @item = CartItem.find(params[:item_id])
+    context = {
+      item: @item,
+      cart: @cart
+    }
+    result = RemoveItemFromCart.call(context)
+    if result.success?
+      redirect_to @cart, notice: result.messaage
+    else
+      redirect_to @cart, alert: result.messaage
     end
   end
 
