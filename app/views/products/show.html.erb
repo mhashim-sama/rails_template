@@ -1,8 +1,10 @@
-<h1 class="container font-bold text-xl mb-2"><%= @product.name %></h1>
+<div class="container">
+  <h1 class="font-bold text-xl mb-2"><%= @product.name %></h1>
 
-<div class="container ml-4">
+  <div class="ml-4">
     <p><%= @product.description %></p>
     <p> <strong> Price: </strong> <%= @product.price %>$</p>
     <br>
     <%= button_to "Add Item to cart", add_cart_items_path(@product.id), method: :post, class: 'text-blue-500 hover:text-blue-800' %>
+  </div>
 </div>
