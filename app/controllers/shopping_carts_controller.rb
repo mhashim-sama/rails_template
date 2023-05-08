@@ -1,4 +1,6 @@
 class ShoppingCartsController < ApplicationController
+  before_action :find_cart
+
   def items
     @items = @cart.cart_items.includes(:product)
   end

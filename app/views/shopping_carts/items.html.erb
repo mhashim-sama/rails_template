@@ -1,5 +1,5 @@
-<h1><%= @user.first_name %>'s shopping cart  </h1>
+<h1><%= current_user.email %> shopping cart  </h1>
 
 <div>
-    <%= render partial: 'shopping_cart/item', collection: @items %>
+    <%= render partial: 'shopping_carts/item', collection: @items %>
 </div>
