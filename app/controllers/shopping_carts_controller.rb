@@ -27,9 +27,9 @@ class ShoppingCartsController < ApplicationController
     }
     result = RemoveItemFromCart.call(context)
     if result.success?
-      redirect_to @cart, notice: result.messaage
+      redirect_to shopping_cart_items_path, notice: result.messaage
     else
-      redirect_to @cart, alert: result.messaage
+      redirect_to shopping_cart_items_path, alert: result.messaage
     end
   end
 

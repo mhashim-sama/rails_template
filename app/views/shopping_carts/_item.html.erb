@@ -1,4 +1,5 @@
 <div>
     <p>Product: <%= item.product.name %></p>
     <p>Quantity: <%= item.quantity %></p>
+    <%= button_to "Delete Item from cart", remove_cart_items_path(item.id), method: :post, class: 'text-blue-500 hover:text-blue-800' %>
 </div>
